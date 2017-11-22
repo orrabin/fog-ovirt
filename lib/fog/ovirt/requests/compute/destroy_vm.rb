@@ -4,7 +4,8 @@ module Fog
       class Real
         def destroy_vm(options = {})
           raise ArgumentError, "instance id is a required parameter" unless options.key? :id
-          client.destroy_vm(options[:id])
+
+          connection.system_service.vms_service.vm_service(options[:id]).remove
         end
       end
 

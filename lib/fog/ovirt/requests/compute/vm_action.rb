@@ -6,7 +6,7 @@ module Fog
           raise ArgumentError, "instance id is a required parameter" unless options.key? :id
           raise ArgumentError, "action is a required parameter" unless options.key? :action
 
-          client.vm_action options[:id], options[:action]
+          connection.system_service.vms_service.vm_service(options[:id]).public_send(options[:action])
         end
       end
 

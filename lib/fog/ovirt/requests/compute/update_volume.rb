@@ -19,7 +19,8 @@ module Fog
           disk_id = options[:id]
           options.delete(:id)
 
-          client.update_volume(id, disk_id, options)
+          disk_attachment = connection.system_service.vms_service.vm_service(id).disk_attachments_service.attachment_service(disk_id)
+          disk_attachment.update(disk_attachment, options)
           true # If we come here, expect success and return true
         end
 

@@ -3,7 +3,7 @@ module Fog
     class Ovirt
       class Real
         def vm_ticket(id, options = {})
-          client.set_ticket(id, options)
+          connection.system_service.vms_service.vm_service(id).ticket(options)
         end
       end
 

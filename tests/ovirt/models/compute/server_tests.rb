@@ -13,7 +13,7 @@ Shindo.tests('Fog::Compute[:ovirt] | server model', ['ovirt']) do
         test("#{action} returns successfully") {
           begin
             server.send(action.to_sym) ? true : false
-          rescue OVIRT::OvirtException
+          rescue OvirtSDK4::Error
             #ovirt exceptions are acceptable for the above actions.
             true
           end
@@ -24,13 +24,12 @@ Shindo.tests('Fog::Compute[:ovirt] | server model', ['ovirt']) do
       model_attribute_hash = server.attributes
       attributes = [ :id,
         :name,
-        :description,
-        :profile,
+        :type,
         :display,
         :creation_time,
         :os,
         :status,
-        :cores,
+        :cpu,
         :memory,
         :cluster,
         :template]

@@ -4,7 +4,7 @@ module Fog
       class Real
         def destroy_affinity_group(id)
           raise ArgumentError, "instance id is a required parameter" unless id
-          client.destroy_affinity_group(id)
+         # client.destroy_affinity_group(id)
         end
       end
 

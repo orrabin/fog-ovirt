@@ -3,7 +3,7 @@ module Fog
     class Ovirt
       class Real
         def list_networks(cluster_id)
-          client.networks(:cluster_id => cluster_id)
+          connection.system_service.clusters_service.cluster_service(cluster_id).networks_service.list
         end
       end
       class Mock

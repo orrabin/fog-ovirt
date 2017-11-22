@@ -81,21 +81,27 @@ module Fog
           obj.instance_variables.each do |v|
             key = v.to_s.gsub("@","").to_sym
             value = obj.instance_variable_get(v)
+
+            if key == :network
+              opts[key] = connection.follow_link(obj.vnic_profile).network.id
+              next
+            end
+
             #ignore nil values
             next if value.nil?
 
-            opts[key] = case value
-                        when OVIRT::Link
-                          value.id
-                        when OVIRT::TemplateVersion
-                          value
-                        when Array
-                          value
-                        when Hash
-                          value
-                        else
-                          value.to_s.strip
-                        end
+            if value.respond_to?(:href) && value.href && value.respond_to?(:id)
+              opts[key] = value.id
+            end
+
+            opts[key] ||= case value
+                          when OvirtSDK4::TemplateVersion, Array, Hash, OvirtSDK4::List, OvirtSDK4::Display
+                            value
+                          when OvirtSDK4::Cpu
+                            opts[:cores] = value.try(:topology).try(:cores)
+                          else
+                            value.to_s.strip
+                          end
           end
           opts
         end
@@ -105,13 +111,14 @@ module Fog
         include Shared
 
         def initialize(options={})
-          require 'rbovirt'
+          #require 'rbovirt'
+          require 'ovirtsdk4'
         end
 
         private
 
-        def client
-          return @client if defined?(@client)
+        def connection
+          return @connection if defined?(@connection)
         end
 
         #read mocks xml
@@ -125,7 +132,8 @@ module Fog
         include Shared
 
         def initialize(options={})
-          require 'rbovirt'
+          #require 'rbovirt'
+          require 'ovirtsdk4'
           username   = options[:ovirt_username]
           password   = options[:ovirt_password]
           server     = options[:ovirt_server]
@@ -133,24 +141,32 @@ module Fog
           api_path   = options[:ovirt_api_path]   || '/api'
           url        = options[:ovirt_url]        || "#{@scheme}://#{server}:#{port}#{api_path}"
 
-          connection_opts = {}
-          connection_opts[:datacenter_id] = options[:ovirt_datacenter]
-          connection_opts[:ca_cert_store] = options[:ovirt_ca_cert_store]
-          connection_opts[:ca_cert_file]  = options[:ovirt_ca_cert_file]
-          connection_opts[:ca_no_verify]  = options[:ovirt_ca_no_verify]
-          connection_opts[:filtered_api]  = options[:ovirt_filtered_api]
+          connection_opts = {
+              :url      => url,
+              :username => username,
+              :password => password,
+          }
 
-          @client = OVIRT::Client.new(username, password, url, connection_opts)
+          @datacenter = options[:ovirt_datacenter]
+          connection_opts[:ca_file]  = options[:ca_file]
+          connection_opts[:ca_certs] = [OpenSSL::X509::Certificate.new(options.delete(:public_key))] if options[:public_key].present?
+
+          @connection = OvirtSDK4::Connection.new(connection_opts)
         end
 
         def api_version
-          client.api_version
+          api = connection.system_service.get
+          api.product_info.version.full_version
+        end
+
+        def datacenter
+          @datacenter
         end
 
         private
 
-        def client
-          @client
+        def connection
+          @connection
         end
       end
     end

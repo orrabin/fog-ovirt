@@ -4,9 +4,7 @@
 <link href="/api/storagedomains/382ec55a-f886-4fa1-b880-0a9fa778aa5b/permissions" rel="permissions"/>
 <link href="/api/storagedomains/382ec55a-f886-4fa1-b880-0a9fa778aa5b/files" rel="files"/>
 <type>iso</type>
-<status>
-<state>unattached</state>
-</status>
+<status>unattached</status>
 <master>false</master>
 <storage>
 <type>nfs</type>

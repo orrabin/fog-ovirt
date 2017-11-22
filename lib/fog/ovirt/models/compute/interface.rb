@@ -6,9 +6,10 @@ module Fog
         identity :id
 
         attribute :name
-        attribute :network
+        attribute :vnic_profile
         attribute :interface
         attribute :mac
+        attribute :network
 
         def to_s
           name

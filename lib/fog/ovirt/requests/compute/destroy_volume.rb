@@ -6,7 +6,8 @@ module Fog
           raise ArgumentError, "instance id is a required parameter" unless id
           raise ArgumentError, "volume id is a required parameter for destroy-volume" unless options.key? :id
 
-          client.destroy_volume(id, options[:id])
+          disks_service = connection.system_service.disks_service
+          disks_service.disk_service(options[:id]).remove
         end
       end
 

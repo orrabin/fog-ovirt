@@ -13,14 +13,12 @@
       <storage_domains>
           <storage_domain id="a23a4329-33b9-4246-a393-4f91071825b6"/>
       </storage_domains>
-      <size>4294967296</size>
       <provisioned_size>4294967296</provisioned_size>
       <actual_size>1073741824</actual_size>
-      <status>
-          <state>ok</state>
-      </status>
+      <status>ok</status>
       <interface>virtio</interface>
       <format>cow</format>
+      <qcow_version>qcow2_v3</qcow_version>
       <sparse>true</sparse>
       <bootable>false</bootable>
       <shareable>false</shareable>
@@ -41,14 +39,12 @@
       <storage_domains>
           <storage_domain id="c8431bb5-f57b-4ce8-8ba0-17c1859bc767"/>
       </storage_domains>
-      <size>21474836480</size>
       <provisioned_size>21474836480</provisioned_size>
       <actual_size>1073741824</actual_size>
-      <status>
-          <state>ok</state>
-      </status>
+      <status>ok</status>
       <interface>virtio</interface>
       <format>cow</format>
+      <qcow_version>qcow2_v3</qcow_version>
       <sparse>true</sparse>
       <bootable>false</bootable>
       <shareable>false</shareable>

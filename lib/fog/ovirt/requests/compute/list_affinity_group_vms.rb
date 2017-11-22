@@ -3,7 +3,7 @@ module Fog
     class Ovirt
       class Real
         def list_affinity_group_vms(id)
-          client.affinity_group_vms(id).map {|vm| servers.get(vm.id)}
+        #  client.affinity_group_vms(id).map {|vm| servers.get(vm.id)}
         end
       end
 
@@ -12,7 +12,7 @@ module Fog
           vms = []
           Nokogiri::XML(read_xml('affinitygroup_vms.xml')).xpath('/vms/vm/@id').each do |id|
             xml = Nokogiri::XML(read_xml('vms.xml')).xpath("/vms/vm[@id='%s']" % id.value).first
-            vms << ovirt_attrs(OVIRT::VM::new(self, xml))
+            vms << ovirt_attrs(OvirtSDK4::Reader.read(xml.to_s))
           end
           vms
         end

@@ -11,17 +11,18 @@ module Fog
         attribute :name
         attribute :comment
         attribute :description
-        attribute :profile
+        attribute :type
         attribute :display
         attribute :storage,       :aliases => 'disk_size'
         attribute :creation_time
         attribute :os
         attribute :ip
         attribute :status
-        attribute :cores,         :aliases => 'cpus'
+        attribute :cpu
         attribute :memory
         attribute :host
         attribute :cluster
+        attribute :cores
         attribute :template
         attribute :instance_type
         attribute :interfaces

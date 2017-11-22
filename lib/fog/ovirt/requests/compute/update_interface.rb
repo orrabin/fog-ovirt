@@ -18,7 +18,8 @@ module Fog
           interface_id = options[:id]
           options.delete(:id)
 
-          client.update_interface(id, interface_id, options)
+          nic = connection.system_service.vms_service.vm_service(id).nics_service.nic_service(interface_id)
+          nic.update(nic, options)
         end
       end
 

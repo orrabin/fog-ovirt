@@ -9,7 +9,7 @@ Shindo.tests('Fog::Compute[:ovirt] | interface model', ['ovirt']) do
     end
     tests('have attributes') do
       model_attribute_hash = interface.attributes
-      attributes = [ :id, :name, :network]
+      attributes = [ :id, :name, :vnic_profile]
       tests("The interface model should respond to") do
         attributes.each do |attribute|
           test("#{attribute}") { interface.respond_to? attribute }

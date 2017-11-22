@@ -3,14 +3,23 @@ module Fog
     class Ovirt
       class Real
         def list_vm_volumes(vm_id)
-          client.vm_volumes(vm_id).map {|ovirt_obj| ovirt_attrs ovirt_obj}
+          # disk_attachments_service = connection.system_service.vms_service.vm_service(vm_id).disk_attachments_service
+          # disk_attachments_service.list.map {|ovirt_obj| ovirt_attrs connection.system_service.disks_service.disk_service(ovirt_obj.id).get}
+
+          vm = connection.system_service.vms_service.vm_service(vm_id).get
+
+          attachments = connection.follow_link(vm.disk_attachments)
+
+          attachments.map do |attachment|
+            ovirt_attrs connection.follow_link(attachment.disk)
+          end
         end
       end
       class Mock
         def list_vm_volumes(vm_id)
           xml = read_xml 'volumes.xml'
           Nokogiri::XML(xml).xpath('/disks/disk').map do |vol|
-            ovirt_attrs OVIRT::Volume::new(self, vol)
+            ovirt_attrs OvirtSDK4::Reader.read(vol.to_s)
           end
         end
       end

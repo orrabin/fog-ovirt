@@ -6,11 +6,9 @@
     <storage_domains>
       <storage_domain id="cba62b33-887a-410c-b367-e3d9229a72f7"/>
     </storage_domains>
-    <size>5368709120</size>
+    <provisioned_size>5368709120</provisioned_size>
     <type>data</type>
-    <status>
-      <state>ok</state>
-    </status>
+    <status>ok</status>
     <interface>virtio</interface>
     <format>raw</format>
     <sparse>true</sparse>
@@ -25,11 +23,9 @@
     <storage_domains>
       <storage_domain id="cba62b33-887a-410c-b367-e3d9229a72f7"/>
     </storage_domains>
-    <size>8589934592</size>
+    <provisioned_size>8589934592</provisioned_size>
     <type>system</type>
-    <status>
-      <state>ok</state>
-    </status>
+    <status>ok</status>
     <interface>virtio</interface>
     <format>cow</format>
     <sparse>true</sparse>

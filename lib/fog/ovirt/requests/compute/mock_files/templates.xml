@@ -7,15 +7,21 @@
 <link href="/api/templates/00000000-0000-0000-0000-000000000000/cdroms" rel="cdroms"/>
 <link href="/api/templates/00000000-0000-0000-0000-000000000000/permissions" rel="permissions"/>
 <type>desktop</type>
-<status>
-<state>ok</state>
-</status>
+<status>ok</status>
 <memory>536870912</memory>
 <cpu>
-<topology sockets="1" cores="1"/>
+<topology>
+  <cores>1</cores>
+  <sockets>1</sockets>
+</topology>
 </cpu>
-<os type="unassigned">
-<boot dev="hd"/>
+<os>
+  <type>unassigned</type>
+  <boot>
+    <devices>
+      <device>hd</device>
+    </devices>
+  </boot>
 </os>
 <cluster href="/api/clusters/99408929-82cf-4dc7-a532-9d998063fa95" id="99408929-82cf-4dc7-a532-9d998063fa95"/>
 <creation_time>2008-04-01T00:00:00.000+01:00</creation_time>
@@ -41,15 +47,21 @@
 <link href="/api/templates/05a5144f-8ef7-4151-b7f9-5014510b489e/cdroms" rel="cdroms"/>
 <link href="/api/templates/05a5144f-8ef7-4151-b7f9-5014510b489e/permissions" rel="permissions"/>
 <type>server</type>
-<status>
-<state>ok</state>
-</status>
+<status>ok</status>
 <memory>1073741824</memory>
 <cpu>
-<topology sockets="4" cores="1"/>
+  <topology>
+    <cores>1</cores>
+    <sockets>4</sockets>
+  </topology>
 </cpu>
-<os type="unassigned">
-<boot dev="network"/>
+<os>
+  <type>unassigned</type>
+  <boot>
+    <devices>
+      <device>network</device>
+    </devices>
+  </boot>
 <kernel/>
 <initrd/>
 <cmdline/>
@@ -78,15 +90,21 @@
 <link href="/api/templates/2a08ba05-f3b1-4e5a-ade9-496466a8b323/cdroms" rel="cdroms"/>
 <link href="/api/templates/2a08ba05-f3b1-4e5a-ade9-496466a8b323/permissions" rel="permissions"/>
 <type>server</type>
-<status>
-<state>ok</state>
-</status>
+<status>ok</status>
 <memory>536870912</memory>
 <cpu>
-<topology sockets="1" cores="1"/>
+  <topology>
+    <cores>1</cores>
+    <sockets>1</sockets>
+  </topology>
 </cpu>
-<os type="unassigned">
-<boot dev="network"/>
+<os>
+  <type>unassigned</type>
+  <boot>
+    <devices>
+      <device>network</device>
+    </devices>
+  </boot>
 <kernel/>
 <initrd/>
 <cmdline/>

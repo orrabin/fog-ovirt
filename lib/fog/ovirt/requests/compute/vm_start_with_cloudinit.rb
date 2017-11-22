@@ -4,7 +4,7 @@ module Fog
       class Real
         def vm_start_with_cloudinit(options = {})
           raise ArgumentError, "instance id is a required parameter" unless options.key? :id
-          client.vm_start_with_cloudinit(options[:id], options[:user_data])
+          #client.vm_start_with_cloudinit(options[:id], options[:user_data])
         end
       end
 

@@ -8,19 +8,25 @@
 <link href="/api/vms/52b9406e-cf66-4867-8655-719a094e324c/permissions" rel="permissions"/>
 <link href="/api/vms/52b9406e-cf66-4867-8655-719a094e324c/statistics" rel="statistics"/>
 <type>server</type>
-<status>
-<state>down</state>
-</status>
+<status>down</status>
 <memory>805306368</memory>
 <cpu>
-<topology sockets="1" cores="1"/>
+<topology>
+  <cores>1</cores>
+  <sockets>1</sockets>
+</topology>
 </cpu>
-<os type="unassigned">
-<boot dev="network"/>
-<boot dev="hd"/>
-<kernel/>
-<initrd/>
-<cmdline/>
+<os>
+  <type>unassigned</type>
+  <boot>
+    <devices>
+      <device>network</device>
+      <device>hd</device>
+    </devices>
+  </boot>
+  <kernel/>
+  <initrd/>
+  <cmdline/>
 </os>
 <high_availability>
 <enabled>false</enabled>

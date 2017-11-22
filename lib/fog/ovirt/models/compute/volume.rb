@@ -7,7 +7,7 @@ module Fog
         identity :id
 
         attribute :storage_domain
-        attribute :size
+        attribute :provisioned_size
         attribute :disk_type
         attribute :bootable
         attribute :interface
@@ -20,11 +20,11 @@ module Fog
         attribute :wipe_after_delete
 
         def size_gb
-          attributes[:size_gb] ||= attributes[:size].to_i / DISK_SIZE_TO_GB if attributes[:size]
+          attributes[:size_gb] ||= attributes[:provisioned_size].to_i / DISK_SIZE_TO_GB if attributes[:provisioned_size]
         end
 
         def size_gb= s
-          attributes[:size] = s.to_i * DISK_SIZE_TO_GB if s
+          attributes[:provisioned_size] = s.to_i * DISK_SIZE_TO_GB if s
         end
 
         def to_s

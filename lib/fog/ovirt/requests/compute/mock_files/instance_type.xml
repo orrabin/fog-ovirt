@@ -7,10 +7,18 @@
   <link href="/api/instancetypes/00000009-0009-0009-0009-0000000002fa/graphicsconsoles" rel="graphicsconsoles"/>
   <memory>8589934592</memory>
   <cpu>
-    <topology sockets="2" cores="1" threads="1"/>
+    <topology>
+      <cores>1</cores>
+      <sockets>2</sockets>
+      <threads>1</threads>
+    </topology>
   </cpu>
   <os>
-    <boot dev="hd"/>
+    <boot>
+      <devices>
+        <device>hd</device>
+      </devices>
+    </boot>
   </os>
   <creation_time>2014-05-05T02:30:00.000+05:30</creation_time>
   <high_availability>
@@ -18,10 +26,10 @@
     <priority>0</priority>
   </high_availability>
   <display>
-    <type>spice</type>
     <monitors>1</monitors>
     <single_qxl_pci>false</single_qxl_pci>
     <smartcard_enabled>false</smartcard_enabled>
+    <type>spice</type>
   </display>
   <usb>
     <enabled>false</enabled>

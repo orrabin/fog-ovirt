@@ -6,7 +6,8 @@ module Fog
           raise ArgumentError, "instance id is a required parameter" unless id
           raise ArgumentError, "interface id is a required parameter for destroy-interface" unless options.key? :id
 
-          client.destroy_interface(id, options[:id])
+          vm = connection.system_service.vms_service.vm_service(id)
+          vm.nics_service.nic_service(options[:id]).remove(options)
         end
       end
 

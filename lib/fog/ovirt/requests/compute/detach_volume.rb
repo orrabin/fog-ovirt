@@ -6,7 +6,7 @@ module Fog
           raise ArgumentError, "instance id is a required parameter" unless id
           raise ArgumentError, "volume id is a required parameter for detach-volume" unless options.key? :id
 
-          client.detach_volume(id, options[:id])
+         # client.detach_volume(id, options[:id])
         end
       end
 

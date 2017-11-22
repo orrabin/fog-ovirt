@@ -15,7 +15,7 @@ module Fog
         attribute :creation_time
         attribute :os
         attribute :status
-        attribute :cores,         :aliases => 'cpus'
+        attribute :cores
         attribute :memory
         attribute :cluster
         attribute :interfaces

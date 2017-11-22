@@ -1,6 +1,6 @@
 require 'fog/core'
 require 'fog/xml'
-require 'rbovirt'
+require 'ovirtsdk4'
 
 module Fog
   module Ovirt
